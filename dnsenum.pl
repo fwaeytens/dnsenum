@@ -67,7 +67,7 @@ my ($ithreads_support, $whois_support, $mech_support, $html_support,$xml_support
 my (%nameservers, %allsubs, %googlesubs);
 my (%filesubs, %netranges, %recursubs);
 my (@mxservers, @results, @ipblocks, @privateips);
-my ($enum, $exp, $help, $noreverse, $update, $whois, $dnsserver);
+my ($enum, $exp, $help, $noreverse, $nocolor, $update, $whois, $dnsserver);
 my ($private, $recursion, $scrap, $threads, $verbose);
 my ($dnsfile, $subfile, $dns_tmp, $sub_tmp, $fileips);
 my ($domain, $recur, $table, $extend_b, $extend_r);
@@ -114,6 +114,7 @@ GetOptions (	'dnsserver=s'	=>	\$dnsserver,
 		'f|file=s'	=>	\$dnsfile,
 		'h|help' 	=>	\$help,
 		'noreverse'	=>	\$noreverse,
+		'nocolor'	=>	\$nocolor,
 		'p|pages=i'	=>	\$pages,
 		'private'	=>	\$private,
 		'r|recursion'	=>	\$recursion,
@@ -209,9 +210,13 @@ $timeout = 10 if $timeout < 0 || $timeout > 128;
 $delay = 3 if $delay < 0;
 
 $update = undef if $update && !$dnsfile;
-print color 'bold blue';
+unless ($nocolor) {
+	print color 'bold blue';
+}
 print STDOUT "\n-----   ", $domain ,"   -----\n";
-print color 'reset';
+unless ($nocolor) {
+	print color 'reset';
+}
 ################START#####################
 
 # (1) get the host's addresses
@@ -265,13 +270,17 @@ if ($wildcardpacket) {
 		}
 	}
 	
-	print color 'bold red';
+	unless ($nocolor) {
+		print color 'bold red';
+	}
 	print "\n\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n";
 	print STDOUT " Wildcards detected, all subdomains will point to the same IP address\n";
 	print STDOUT " Omitting results containing ".$wildcardaddress.".\n Maybe you are using OpenDNS servers.\n";
 	print "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
 	
-	print color 'reset';
+	unless ($nocolor) {
+		print color 'reset';
+	}
 	
 	#exit(1);#we don't exit when wildcards are detected, because we will miss existing hosts
 }
@@ -1346,9 +1355,13 @@ sub printrr {
 }
 sub printheader{
 	my ($header) = @_;
-	print color 'bold red';
+	unless ($nocolor) {
+		print color 'bold red';
+	}
 	print STDOUT "\n\n".$header."_" x length($header) ."\n\n";
-	print color 'reset';
+	unless ($nocolor) {
+		print color 'reset';
+	}
 }
 
 #the usage subroutine
@@ -1363,6 +1376,7 @@ GENERAL OPTIONS:
   --enum		Shortcut option equivalent to --threads 5 -s 15 -w.
   -h, --help		Print this help message.
   --noreverse		Skip the reverse lookup operations.
+  --nocolor		Disable ANSIColor output.
   --private		Show and save private ips at the end of the file domain_ips.txt.
   --subfile <file>	Write all valid subdomains to this file.
   -t, --timeout <value>	The tcp and udp timeout values in seconds (default: 10s).
@@ -1487,6 +1501,12 @@ Print the help message.
 
 Skip the reverse lookup operations.
  Reverse lookups can take long time on big netranges.
+
+=item B<--nocolor>
+
+Disable ANSIColor output.
+ This option is only intended to be used on consoles that do not support
+ color output.
 
 =item B<--private>
 
