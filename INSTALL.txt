@@ -2,7 +2,9 @@
 
 ##To install missing Perl modules, first install cpanminus (as root):
 
-apt-get install cpanminus
+debian:	apt-get install cpanminus
+centos: yum install cpan
+	curl -L http://cpanmin.us | perl - App::cpanminus
 
 ##Then:
 
@@ -15,6 +17,8 @@ Building and testing String-Random-0.25 ... OK
 Successfully installed String-Random-0.25
 1 distribution installed
 
+Mac Os X
+========
 ## on OSX you can get install the modules by typing:
 
 perl -MCPAN -e shell
