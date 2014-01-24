@@ -19,8 +19,6 @@ Successfully installed String-Random-0.25
 
 Mac Os X
 ========
-## on OSX you can get install the modules by typing:
-
 perl -MCPAN -e shell
 
 ## and then type something like:
