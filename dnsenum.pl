@@ -1414,7 +1414,7 @@ dnsenum.pl: multithread script to enumerate information on a domain and to disco
 
 =head1 VERSION
 
-dnsenum.pl version 1.2.3
+dnsenum.pl version 1.2.4
 
 =head1 SYNOPSIS
 
