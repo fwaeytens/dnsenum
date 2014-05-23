@@ -1,4 +1,4 @@
-README - dnsenum.pl VERSION: 1.2.3
+README - dnsenum.pl VERSION: 1.2.4
 
 multithreaded perl script to enumerate DNS information of a domain
 and to discover non-contiguous ip blocks.
