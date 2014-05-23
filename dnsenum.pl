@@ -1,11 +1,8 @@
 #!/usr/bin/perl
 #
 #
-#	dnsenum.pl VERSION 1.2.3
-#	This version:	- Fixed GoogleScraping
-#			- Fixed wildcard issues
-#			- Changed output function to get rid of errors with new Net::DNS version
-#			- A bit of cleanup here and there		
+#	dnsenum.pl VERSION 1.2.4
+#	This version:	- changed version number to the correct one		
 #		
 #	dnsenum.pl: multithread script to enumerate information on
 #		a domain and to discover non-contiguous ip blocks.
