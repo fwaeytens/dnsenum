@@ -76,7 +76,7 @@ my $string_gen = String::Random->new;
 my $wildcards = $string_gen->randpattern("cccccccccccc");
 my $wildcardaddress = "0.0.0.0";
 my $wildcardcname = $wildcards ;
-my $VERSION = '1.2.3';
+my $VERSION = '1.2.4';
 
 #load threads modules (perl must be compiled with ithreads support)
 BEGIN {
