@@ -74,8 +74,8 @@ my $writer;
 my $program = 'dnsenum.pl';
 my $string_gen = String::Random->new;
 my $wildcards = $string_gen->randpattern("cccccccccccc");
-my $wildcardaddress = "0.0.0.0";
-my $wildcardcname = $wildcards ;
+my @wildcardaddress;
+my @wildcardcname;
 my $VERSION = '1.2.4';
 
 #load threads modules (perl must be compiled with ithreads support)
@@ -253,8 +253,7 @@ if ($wildcardpacket) {
 		printrr($rr->string);
 		#wildcardaddress will hold the IP that's used as a string
 		my @wcheck= split('\s+',$rr->string); 
-		$wildcardaddress = $wcheck[4];
-
+		push (@wildcardaddress, $wcheck[4]);
 			
 		}
 		if ($rr->type eq 'CNAME')
@@ -262,7 +261,7 @@ if ($wildcardpacket) {
 		printrr($rr->string);
 		#wildcardcname will hold CNAME that's used as a string
 		my @wcheck= split('\s+',$rr->string); 
-		$wildcardcname = $wcheck[4];
+		push(@wildcardcname, $wcheck[4]);
 		
 		}
 	}
@@ -272,7 +271,7 @@ if ($wildcardpacket) {
 	}
 	print "\n\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n\n";
 	print STDOUT " Wildcards detected, all subdomains will point to the same IP address\n";
-	print STDOUT " Omitting results containing ".$wildcardaddress.".\n Maybe you are using OpenDNS servers.\n";
+	print STDOUT " Omitting results containing ".join(', ', @wildcardaddress).".\n Maybe you are using OpenDNS servers.\n";
 	print "\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n";
 	
 	unless ($nocolor) {
@@ -696,7 +695,7 @@ sub nslookup {
 		if ($query) {
 			foreach my $rr ($query->answer) {
 				##we only print / add the result if it doesn't match the wildcardaddress
-				if ($rr->string !~ /$wildcardaddress$/ && $rr->string !~ /\s+$wildcardcname$/) 
+				if (!($rr->address ~~ @wildcardaddress) && !($rr->name ~~ @wildcardcname))
 				{
 				printrr($rr->string);
 				xml_host($rr);
