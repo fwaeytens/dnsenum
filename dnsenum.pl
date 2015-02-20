@@ -253,7 +253,7 @@ if ($wildcardpacket) {
 		printrr($rr->string);
 		#wildcardaddress will hold the IP that's used as a string
 		my @wcheck= split('\s+',$rr->string); 
-		push (@wildcardaddress, $wcheck[4]);
+		push @wildcardaddress, $wcheck[4];
 			
 		}
 		if ($rr->type eq 'CNAME')
@@ -261,7 +261,7 @@ if ($wildcardpacket) {
 		printrr($rr->string);
 		#wildcardcname will hold CNAME that's used as a string
 		my @wcheck= split('\s+',$rr->string); 
-		push(@wildcardcname, $wcheck[4]);
+		push @wildcardcname, $wcheck[4];
 		
 		}
 	}
@@ -695,7 +695,7 @@ sub nslookup {
 		if ($query) {
 			foreach my $rr ($query->answer) {
 				##we only print / add the result if it doesn't match the wildcardaddress
-				if (!($rr->address ~~ @wildcardaddress) && !($rr->name ~~ @wildcardcname))
+				if (!($rr->can('address') && $rr->address ~~ @wildcardaddress) && !($rr->name ~~ @wildcardcname))
 				{
 				printrr($rr->string);
 				xml_host($rr);
