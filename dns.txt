@@ -551,6 +551,8 @@ fr
 fra
 frdo
 frdo-cfdd
+fs
+fs1
 fso
 fsoffe
 ftp
@@ -978,6 +980,7 @@ ns01
 ns02
 ns1
 ns2
+ns3
 nsa
 nshq
 nss
@@ -1277,6 +1280,7 @@ shop
 shop-info
 shopinfo
 sibelius
+siem
 sigedis
 silberfonds
 simplification
@@ -1307,6 +1311,7 @@ snislnmail2
 snislnmail3
 snislnmail4
 snislnmail5
+snmp
 snmg1
 snpl01
 sobane
@@ -1351,6 +1356,7 @@ surveykce
 sw
 swtc02
 sylvie
+syslog
 ta
 taalnet
 taccp
