@@ -197,10 +197,10 @@ if(defined($output)) {
 $scrap = undef
 	if $scrap && ((not defined $mech_support and
 	warn "Warning: can't load WWW::Mechanize module".
-			", Google scraping desabled.\n") ||
+			", Google scraping disabled.\n") ||
 	(not defined $html_support and
 	warn "Warning: can't load HTML::Parser module".
-			", Google scraping desabled.\n") ||
+			", Google scraping disabled.\n") ||
 	$scrap <= 0 || $pages <= 0);
 
 $timeout = 10 if $timeout < 0 || $timeout > 128;
