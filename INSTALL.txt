@@ -8,14 +8,23 @@ centos: yum install cpan
 
 ##Then:
 
-root@kali:~# cpanm String::Random
+root@kali:~# cpanm String::Random Net::Netmask XML::Writer
 --> Working on String::Random
-Fetching http://www.cpan.org/authors/id/S/SH/SHLOMIF/String-Random-0.25.tar.gz .
-.. OK
-Configuring String-Random-0.25 ... OK
-Building and testing String-Random-0.25 ... OK
-Successfully installed String-Random-0.25
-1 distribution installed
+Fetching http://www.cpan.org/authors/id/S/SH/SHLOMIF/String-Random-0.29.tar.gz ... OK
+Configuring String-Random-0.29 ... OK
+Building and testing String-Random-0.29 ... OK
+Successfully installed String-Random-0.29
+--> Working on Net::Netmask
+Fetching http://www.cpan.org/authors/id/M/MU/MUIR/modules/Net-Netmask-1.9022.tar.gz ... OK
+Configuring Net-Netmask-1.9022 ... OK
+Building and testing Net-Netmask-1.9022 ... OK
+Successfully installed Net-Netmask-1.9022
+--> Working on XML::Writer
+Fetching http://www.cpan.org/authors/id/J/JO/JOSEPHW/XML-Writer-0.625.tar.gz ... OK
+Configuring XML-Writer-0.625 ... OK
+Building and testing XML-Writer-0.625 ... OK
+Successfully installed XML-Writer-0.625
+3 distributions installed
 
 Mac Os X
 ========
