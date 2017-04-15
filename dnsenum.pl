@@ -48,6 +48,7 @@
 
 use strict;
 use warnings;#it complains about uninitialized values when it doesn't find address in RR; need to fix later
+no if $] >= 5.018, 'warnings', "experimental::smartmatch";
 use Config;
 use Term::ANSIColor;
 use Getopt::Long;
