@@ -122,7 +122,7 @@ GetOptions (	'dnsserver=s'	=>	\$dnsserver,
 		'u|update=s'	=>	\$update,
 		'v|verbose'	=>	\$verbose,
 		'w|whois'	=>	\$whois,
-		'o|out=s'	=>	\$output);
+		'o|output=s'	=>	\$output);
 
 usage() if $help || @ARGV == 0;
 
