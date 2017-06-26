@@ -889,7 +889,7 @@ sub googlescraping {
 
 	my ($response, $browser, $form, $parser, $nextpage);
 	my ($count, $mypage) = (0,1);
-	my $query = qq[allinurl: -www site:$domain];
+	my $query = qq[-www site:$domain];
 	my $nexturl = qq[/search?.*q=.*$domain.*start];
 	
 	#on errors the mech object will call die
