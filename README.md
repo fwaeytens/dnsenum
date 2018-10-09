@@ -2,7 +2,7 @@ README - dnsenum.pl VERSION: 1.2.4
 
 multithreaded perl script to enumerate DNS information of a domain
 and to discover non-contiguous ip blocks.
-
+###
 OPERATIONS:
 
 	1) Get the host's addresse (A record).
