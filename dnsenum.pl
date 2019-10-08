@@ -1345,7 +1345,7 @@ sub cleanfile {
 sub printrr {
 	
 	my $output = shift;
-	my @outputA = split('\s+',$output);
+	my @outputA = split('\s+',$output,5);
 	printf("%-40s %-8s %-5s %-8s %10s\n", $outputA[0], $outputA[1], $outputA[2], $outputA[3], $outputA[4]);
 	
 }
